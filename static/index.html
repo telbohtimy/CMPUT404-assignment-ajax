@@ -39,10 +39,10 @@ function sendJSONXMLHTTPRequest(url, objects, callback) {
                 if (xhr.status==200) {
                     //XXX: parse some JSON from the request!
                     //XXX: Pass the data to the callback!
-		    var parsedData=JSON.parse(xhr.responseText);
-		    if (callback){
-			callback(parsedData);
-			}
+					var parsedData=JSON.parse(xhr.responseText);
+					if (callback){
+						callback(parsedData);
+					}
                 }
             } 
             catch(e) {
@@ -245,10 +245,10 @@ mouse.mouseuppers.push(function(x,y,clicked,e) {
     addEntityWithoutName({'x':x,'y':y,'colour':'white','radius':20});
 });
 mouse.mousedraggers.push(function(x,y,clicked,e) {
-	var nextColor=['red','orange','yellow','green','blue','indigo','violet'];
-	var pos=count%nextColor.length;
+	var rainbow=['red','orange','yellow','green','blue','indigo','violet'];
+	var pos=count%rainbow.length;
 	count++;
-        addEntityWithoutName({'x':x,'y':y,'colour':nextColor[pos],
+        addEntityWithoutName({'x':x,'y':y,'colour':rainbow[pos],
                           'radius':10});
 });
 
