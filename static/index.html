@@ -39,10 +39,10 @@ function sendJSONXMLHTTPRequest(url, objects, callback) {
                 if (xhr.status==200) {
                     //XXX: parse some JSON from the request!
                     //XXX: Pass the data to the callback!
-					var parsedData=JSON.parse(xhr.responseText);
-					if (callback){
-						callback(parsedData);
-					}
+		    var parsedData=JSON.parse(xhr.responseText);
+		    if (callback){
+			callback(parsedData);
+			}
                 }
             } 
             catch(e) {
@@ -53,7 +53,7 @@ function sendJSONXMLHTTPRequest(url, objects, callback) {
     //XXX: POST to a URL
     //XXX: set the mimetype and the accept headers!
     // Remember to use application/json !
-	xhr.open('POST', url);
+    xhr.open('POST', url);
     xhr.setRequestHeader('Accept', 'application/json');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(objects));
@@ -132,8 +132,8 @@ function addEntity(entity, data) {
     world[entity] = data;
     drawNextFrame(); // (but should we?)
     //XXX: Send a XHTML Request that updates the entity you just  modified!
-	entity=encodeURIComponent(entity) //If weird ascii appears in entity
-	sendJSONXMLHTTPRequest('/entity/'+entity, data, null);
+    entity=encodeURIComponent(entity) //If weird ascii appears in entity
+    sendJSONXMLHTTPRequest('/entity/'+entity, data, null);
 }
 var counter = 0;
 function addEntityWithoutName(data) {
@@ -248,7 +248,7 @@ mouse.mousedraggers.push(function(x,y,clicked,e) {
 	var nextColor=['red','orange','yellow','green','blue','indigo','violet'];
 	var pos=count%nextColor.length;
 	count++;
-    addEntityWithoutName({'x':x,'y':y,'colour':nextColor[pos],
+        addEntityWithoutName({'x':x,'y':y,'colour':nextColor[pos],
                           'radius':10});
 });
 
@@ -259,7 +259,7 @@ function worldUpdate(newUpdate){
 }
 function update() {
     //XXX: TODO Get the world from the webservice using a XMLHTTPRequest
-	sendJSONXMLHTTPRequest('/world', null, worldUpdate);
+    sendJSONXMLHTTPRequest('/world', null, worldUpdate);
     drawFrame();
 }
 // 30 frames per second
